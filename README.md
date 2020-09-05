@@ -2,13 +2,16 @@
 
 ## users テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| name     | string  | null: false |
-| nickname | string  | null: false |
-| password | string  | null: false |
-| email    | string  | null: false |
-| birthday | date    | null: false |
+| Column          | Type    | Options     |
+| --------------- | ------- | ----------- |
+| last_name       | string  | null: false |
+| first_name      | string  | null: false |
+| last_name_kana  | string  | null: false |
+| first_name_kana | string  | null: false |
+| nickname        | string  | null: false |
+| password        | string  | null: false |
+| email           | string  | null: false |
+| birthday        | date    | null: false |
 
 ### Association
 
@@ -17,32 +20,41 @@
 
 ## items テーブル
 
-| Column   | Type        | Options                        |
-| -------- | ----------- | ------------------------------ |
-| name     | string      | null: false                    |
-| price    | integer     | null: false                    |
-| category | string      | null: false                    |
-| user     | references  | null: false, foreign_key: true |
-| shopping | references  | null: false, foreign_key: true |
+| Column      | Type        | Options                        |
+| ----------- | ----------- | ------------------------------ |
+| name        | string      | null: false                    |
+| price       | integer     | null: false                    |
+| user_id     | references  | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :users 
-- belongs_to :shopping
+- belongs_to :user 
+
+## user_item テーブル
+
+| Column      | Type        | Options                        |
+| ----------- | ----------- | ------------------------------ |
+| item_id     | references  | null: false  foreign_key: true |
+| user_id     | references  | null: false, foreign_key: true |
+
+## Association
+- belongs_to :user
+- belongs_to :item
 
 ## shoppings テーブル
 
-| Column    | Type       | Options                        |
-| --------- | ---------- | ------------------------------ |
-| phone     | integer    | null: false                    |
-| card      | integer    | null: false                    |
-| address   | string     | null: false                    |
-| user      | references | null: false, foreign_key: true |
-
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| postcode     | references | null: false                    |
+| city         | references | null: false                    |
+| block        | references | null: false                    |
+| building     | references | null: false                    |
+| phone_number | string     | null: false                    |
+| address      | string     | null: false                    |
+| user_id      | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many   :items
-- belongs_to :users
+- belongs_to :user
 

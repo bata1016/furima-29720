@@ -8,12 +8,11 @@
 | nickname | string  | null: false |
 | password | string  | null: false |
 | email    | string  | null: false |
-| birthday | integer | null: false |
+| birthday | date    | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :comments
 - has_one  :shoppings
 
 ## items テーブル
@@ -29,7 +28,6 @@
 
 ### Association
 
-- has_many   :comments
 - belongs_to :users 
 - belongs_to :shopping
 
@@ -48,15 +46,3 @@
 - has_many   :items
 - belongs_to :users
 
-## comments テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| content | string     |                                |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :users
-- belongs_to :items

@@ -24,6 +24,8 @@
 | ----------- | ----------- | ------------------------------ |
 | name        | string      | null: false                    |
 | price       | integer     | null: false                    |
+| description | text        | null: false                    |
+| image       | integer     | null: false                    |
 | user_id     | references  | null: false, foreign_key: true |
 
 

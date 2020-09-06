@@ -25,11 +25,13 @@
 | name          | string      | null: false                    |
 | price         | integer     | null: false                    |
 | description   | text        | null: false                    |
-| user          | references  | null: false  foreign_key: true|
-| category      | integer     | null: false, foreign_key: true |
-| delivery_fee  | integer     | null: false, foreign_key: true |
-| delivery_date | integer     | null: false, foreign_key: true |
-| statement     | integer     | null: false, foreign_key: true |
+| user          | references  | null: false  foreign_key: true |
+| category      | integer     | null: false                    |
+| delivery_fee  | integer     | null: false                    |
+| delivery_date | integer     | null: false                    |
+| statement     | integer     | null: false                    |
+| prefecture    | integer     | null: false                    |
+
 
 
 
@@ -61,10 +63,10 @@
 | block        | string     | null: false                    |
 | building     | string     |                                |
 | phone_number | string     | null: false                    |
-| prefecture   | integer    | null: false, foreign_key: true |
+| prefecture   | integer    | null: false                    |
 | user_item    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user_items
+- belongs_to :user_item
 

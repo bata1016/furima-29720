@@ -15,8 +15,8 @@
 
 ### Association
 
-- has_many :items
-- has_one  :shoppings
+- has_many  :items
+- has_many  :shoppings
 
 ## items テーブル
 
@@ -25,7 +25,7 @@
 | name        | string      | null: false                    |
 | price       | integer     | null: false                    |
 | description | text        | null: false                    |
-| image       | integer     | null: false                    |
+| sold        | boolean     | null: false                    |
 | user_id     | references  | null: false, foreign_key: true |
 
 

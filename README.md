@@ -1,5 +1,4 @@
 # テーブル設計
-
 ## users テーブル
 
 | Column          | Type    | Options     |
@@ -8,10 +7,10 @@
 | first_name      | string  | null: false |
 | last_name_kana  | string  | null: false |
 | first_name_kana | string  | null: false |
-| nickname        | string  | null: false |
+| nick_name       | string  | null: false |
 | password        | string  | null: false |
 | email           | string  | null: false |
-| birthday        | date    | null: false |
+| birth_day       | date    | null: false |
 
 ### Association
 

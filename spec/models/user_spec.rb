@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
-    it 'メールアドレス一意性であること' do # エラー起こらず。実際に使うとバリデーションあり
+    it 'メールアドレスが一意性であること' do 
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name kana can't be blank", "First name kana can't be blank")
     end
 
-    it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること' do # エラー起こらず
+    it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること' do 
       @user.first_name_kana = 'かた'
       @user.last_name_kana = 'かな'
       @user.valid?

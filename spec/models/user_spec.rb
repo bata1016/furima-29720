@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
   describe 'ユーザー情報' do
-    it "ニックネーム、メールアドレス、パスワード、本名、本名のカナ、誕生日があれば登録できる" do
+    it 'ニックネーム、メールアドレス、パスワード、本名、本名のカナ、誕生日があれば登録できる' do
       expect(@user).to be_valid
     end
 
@@ -19,17 +19,17 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
-    it 'メールアドレスが一意性であること' do 
+    it 'メールアドレスが一意性であること' do
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.email = @user.email
       another_user.valid?
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
-    it 'メールアドレスに@がなければ登録できない' do 
+    it 'メールアドレスに@がなければ登録できない' do
       @user.email = 'aaaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid')
     end
     it 'パスワードが必須であること' do
       @user.password = ''
@@ -49,7 +49,7 @@ RSpec.describe User, type: :model do
     it '数字のみでは登録できないこと' do
       @user.password = '00000000'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password Include both letters and numbers")
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
     it 'パスワードは確認用を含めて二回入力すること' do
       @user.password_confirmation = ''
@@ -78,7 +78,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name kana can't be blank", "First name kana can't be blank")
     end
 
-    it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること' do 
+    it 'ユーザー本名のフリガナは全角（カタカナ）で入力させること' do
       @user.first_name_kana = 'かた'
       @user.last_name_kana = 'かな'
       @user.valid?

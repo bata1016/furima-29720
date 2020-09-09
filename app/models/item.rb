@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   # バリデーション
   validates :name,              presence: true
   validates :price,             presence: true
+  validates :image,             presence: true
   validates :description,       presence: true, numericality: { other_than: 1 }
   validates :category_id,       presence: true, numericality: { other_than: 1 }
   validates :delivery_fee_id,   presence: true, numericality: { other_than: 1 }
@@ -11,8 +12,12 @@ class Item < ApplicationRecord
 
   # アソシエーション
   belongs_to       :user
-  has_one_attched  :image
+  has_one_attached  :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :delivery_fee, :delivery_date, :category, :statement, :prefecture
+  belongs_to_active_hash :delivery_fee
+  belongs_to_active_hash :delivery_date
+  belongs_to_active_hash :category
+  belongs_to_active_hash :statement
+  belongs_to_active_hash :prefecture
 end

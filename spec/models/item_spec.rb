@@ -72,8 +72,7 @@ RSpec.describe Item, type: :model do
     it '価格についての情報が必須であること' do
       @item.price = nil
       @item.valid?
-      binding.pry
-      # expect(@item.errors.full_messages).to include("Price can't be blank")
+      expect(@item.errors.full_messages).to include("Price can't be blank")
     end
     it "価格が数字でないと出品できないこと" do
       @item.price = "oooo"

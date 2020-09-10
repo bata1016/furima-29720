@@ -70,9 +70,15 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Delivery date must be other than 1')
     end
     it '価格についての情報が必須であること' do
-      @item.price = ''
+      @item.price = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price can't be blank")
+      binding.pry
+      # expect(@item.errors.full_messages).to include("Price can't be blank")
+    end
+    it "価格が数字でないと出品できないこと" do
+      @item.price = "oooo"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number")
     end
     it '価格が¥300より下だと登録できないこと' do
       @item.price = 299

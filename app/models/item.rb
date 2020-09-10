@@ -4,11 +4,15 @@ class Item < ApplicationRecord
   validates :price,             presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image,             presence: true
   validates :description,       presence: true
-  validates :category_id,       presence: true, numericality: { other_than: 1 }
-  validates :delivery_fee_id,   presence: true, numericality: { other_than: 1 }
-  validates :delivery_date_id,  presence: true, numericality: { other_than: 1 }
-  validates :statement_id,      presence: true, numericality: { other_than: 1 }
-  validates :prefecture_id,     presence: true, numericality: { other_than: 1 }
+
+
+  with_options presence: true, numericality: { other_than: 1 }  do
+    validates :category_id    
+    validates :delivery_fee_id
+    validates :delivery_date_id
+    validates :statement_id   
+    validates :prefecture_id  
+  end
 
   # アソシエーション
   belongs_to :user

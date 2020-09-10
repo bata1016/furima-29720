@@ -8,8 +8,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.create(item_parameter)
-    if item.save
+    # binding.pry
+    @item = Item.new(item_parameter)
+    if @item.save
       redirect_to root_path
     else
       render :new
@@ -20,8 +21,8 @@ class ItemsController < ApplicationController
 
   def item_parameter
     params.require(:item).permit(
-      :image, :name, :description, :category_id, :statement_id, :delivery_fee_id, :prefecture_id, :delivery_date_id, :price
-    )
+      :image, :name, :price, :description, :category_id, :statement_id, :delivery_fee_id, :prefecture_id, :delivery_date_id,
+    ).merge(user_id: current_user.id)
   end
 
   def move_to_index

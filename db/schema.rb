@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_015616) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.integer "category_id", null: false
     t.integer "delivery_fee_id", null: false
     t.integer "delivery_date_id", null: false
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_09_09_015616) do
     t.string "first_name_kana", null: false
     t.string "nick_name", null: false
     t.date "birth_day", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

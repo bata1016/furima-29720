@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   validates :name,              presence: true
   validates :price,             presence: true
   validates :image,             presence: true
-  validates :description,       presence: true, numericality: { other_than: 1 }
+  validates :description,       presence: true
   validates :category_id,       presence: true, numericality: { other_than: 1 }
   validates :delivery_fee_id,   presence: true, numericality: { other_than: 1 }
   validates :delivery_date_id,  presence: true, numericality: { other_than: 1 }

@@ -3,9 +3,9 @@ class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
       t.string      :name,              null: false 
-      t.integer     :price,             null: false, numericarity: {only_integer: true, greater_than: 300, less_than: 9999999} 
+      t.integer     :price,             null: false
       t.text        :description,       null: false 
-      t.references  :user,              null: false, foreign_key: true 
+      t.references  :user,              foreign_key: true
       t.integer     :category_id,       null: false 
       t.integer     :delivery_fee_id,   null: false 
       t.integer     :delivery_date_id,  null: false 

@@ -22,6 +22,10 @@ class ItemsController < ApplicationController
     @image = @item.image 
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def item_parameter

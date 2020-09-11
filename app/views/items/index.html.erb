@@ -126,9 +126,9 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
     <% if @items %>
-          <% @items.each do |item| %>
+      <% @items.each do |item| %>
         <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
           <% if not item.image %>
@@ -149,8 +149,8 @@
             </div>
           </div>
         </div>
-        <% end %>
-        </li>
+      <% end %>
+      </li>
       <% end %>
     <% else %>
       <li class='list'>

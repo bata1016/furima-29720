@@ -5,13 +5,12 @@ class Item < ApplicationRecord
   validates :image,             presence: true
   validates :description,       presence: true
 
-
-  with_options presence: true, numericality: { other_than: 1 }  do
-    validates :category_id    
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
     validates :delivery_fee_id
     validates :delivery_date_id
-    validates :statement_id   
-    validates :prefecture_id  
+    validates :statement_id
+    validates :prefecture_id
   end
 
   # アソシエーション

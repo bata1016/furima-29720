@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_XXXXXXXXX");
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById('charge-form');
   form.addEventListener('submit', (e) =>{
     e.preventDefault();
@@ -21,7 +21,7 @@ const pay = () => {
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
       }
-      // なぜname属性を取り除いている？
+      // なぜname属性を取り除いている？→カラム名=name属性となっている。
       document.getElementById("card-number").removeAttribute('name');
       document.getElementById("card-exp-year").removeAttribute('name');
       document.getElementById("card-exp-month").removeAttribute('name');

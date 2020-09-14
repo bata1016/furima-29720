@@ -63,7 +63,7 @@
 | building      | string     |                                |
 | phone_number  | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
-| user_item     | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 

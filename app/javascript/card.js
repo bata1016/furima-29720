@@ -32,6 +32,8 @@ const pay = () => {
       document.getElementById('charge-form').submit();
       document.getElementById('charge-form').reset();
       } else {
+        document.getElementById('charge-form').submit();
+        document.getElementById('charge-form').reset();
         console.log(response.error.message);
         const submit_btn = document.getElementsByClassName('buy-red-btn')[0];
         submit_btn.disabled = false;

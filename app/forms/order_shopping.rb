@@ -8,10 +8,14 @@ class OrderShopping
     validates :postcode,      format: { with: POSTAL_CODE_REGEX,  message: "input correctly" }
     validates :phone_number,  format: { with: /\A\d{10,11}\z/, message: "input correctly"}
   end
-  validates :city,          presence: true
-  validates :block,         presence: true
-  validates :prefecture_id, presence: true, numericality: { other_than: 1 }
-  validates :token,         presence: true
+
+  with_options presence: true do
+    validates :city        
+    validates :block       
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :token       
+  end
+  
 
   def save
     order = Order.create!(user_id: user_id, item_id: item_id)

@@ -2,9 +2,10 @@ class OrderShopping
   include ActiveModel::Model
   attr_accessor :user_id, :postcode, :city, :block, :building, :phone_number,:prefecture_id, :item_id, :token
 
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
   # バリデーション
   with_options presence: true do
-    validates :postcode,      format: { with: /\A\d{3}[-]\d{4}\z/,  message: "input correctly" }
+    validates :postcode,      format: { with: POSTAL_CODE_REGEX,  message: "input correctly" }
     validates :phone_number,  format: { with: /\A\d{10,11}\z/, message: "input correctly"}
   end
   validates :city,          presence: true

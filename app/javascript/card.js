@@ -14,7 +14,6 @@ const pay = () => {
       exp_year: `20${formData.get("exp_year")}`,
       cvc: formData.get("cvc")
     };
-    console.log(card);
 
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
@@ -33,8 +32,7 @@ const pay = () => {
       document.getElementById('charge-form').reset();
       } else {
         document.getElementById('charge-form').submit();
-        document.getElementById('charge-form').reset();
-        console.log(response.error.message);
+        document.getElementById('charge-form').reset();        
         const submit_btn = document.getElementsByClassName('buy-red-btn')[0];
         submit_btn.disabled = false;
       }

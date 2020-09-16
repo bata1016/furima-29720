@@ -12,6 +12,10 @@ RSpec.describe Order, type: :model do
     it "商品が購入できる時" do
       expect(@order_shopping).to be_valid
      end
+    it "建物名が空の時でも登録できること" do
+      @order_shopping.building = ""
+      expect(@order_shopping).to be_valid
+    end
     it "トークンが必須であること" do
       @order_shopping.token = ""
       @order_shopping.valid?
@@ -47,7 +51,7 @@ RSpec.describe Order, type: :model do
       @order_shopping.valid?
       expect(@order_shopping.errors.full_messages).to include("Block can't be blank")
     end
-        it "都道府県が---では登録できないこと" do
+    it "都道府県が---では登録できないこと" do
       @order_shopping.prefecture_id = 1
       @order_shopping.valid?
       expect(@order_shopping.errors.full_messages).to include("Prefecture must be other than 1")

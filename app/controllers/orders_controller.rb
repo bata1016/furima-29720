@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       render "index"
-      # redirect_to item_orders_path(@item.id)
     end
   end
 

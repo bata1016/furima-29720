@@ -5,7 +5,8 @@ FactoryBot.define do
     last_name_kana        { 'ヤマダ' }
     first_name_kana       { 'ハナコ' }
     nick_name             { Faker::Name.initials(number: 3) }
-    password              { Faker::Internet.password(min_length: 6) }
+    # password              { Faker::Internet.password(min_length: 6) }
+    password              { '123abc' }
     password_confirmation { password }
     email                 { Faker::Internet.free_email }
     birth_day             { '10161016' }

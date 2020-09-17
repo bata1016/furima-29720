@@ -21,4 +21,5 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :items
+  has_many :orders
 end

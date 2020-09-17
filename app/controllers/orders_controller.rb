@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_sign_up
   before_action :set_item, only: [:index, :create]
+  before_action :ban_of_written_url
 
   def index
     @order = OrderShopping.new
@@ -38,5 +39,11 @@ class OrdersController < ApplicationController
 
   def move_to_sign_up
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def ban_of_written_url
+    if request.referer.nil?
+      redirect_to root_path
+    end
   end
 end

@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def ban_of_written_url
-    if request.referer.nil?
+    if @item.order.present? || @item.user_id == current_user.id
       redirect_to root_path
     end
   end
